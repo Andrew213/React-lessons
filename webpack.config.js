@@ -41,13 +41,22 @@ module.exports = {
             {
                 test: /\.(s[ac]|c)ss$/i,
                 use: [
+                    // {
+                    //     loader: miniCssExcteractPlugin.loader,
+                    //     options: {
+                    //         publicPath: " "
+                    //     }
+                    // },
+                    "style-loader",
                     {
-                        loader: miniCssExcteractPlugin.loader,
+                        loader: "css-loader",
                         options: {
-                            publicPath: " "
+                            modules: {
+                                mode: 'local',
+                                localIdentName: '[name]_[local]-[hash:base64:5]'
+                            }
                         }
                     },
-                    "css-loader",
                     "postcss-loader",
                     "sass-loader"
                 ]

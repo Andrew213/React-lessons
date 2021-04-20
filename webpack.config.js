@@ -20,7 +20,7 @@ module.exports = {
     target: target,
 
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, path.basename(__dirname)),
         assetModuleFilename: "images/[hash][ext][query]",
         publicPath: ""
     },
@@ -53,11 +53,12 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(ts|js|jsx|tsx)$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                }
+                use: [
+                    "babel-loader",
+                    "ts-loader"
+                ]
             },
         ],
     },
@@ -72,9 +73,9 @@ module.exports = {
     ],
     devtool: "source-map",
     devServer: {
-        contentBase: "./dist",
+        contentBase: `${path.basename(__dirname)}`,
         publicPath: "",
         open: true,
-        hot: true,
+
     }
 }

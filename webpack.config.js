@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
     mode = 'production';
     target = "browserslist"
 };
-
+const GLOBAL_CSS_REGEXP = /\.global\.css$/;
 
 
 module.exports = {
@@ -24,8 +24,11 @@ module.exports = {
         assetModuleFilename: "images/[hash][ext][query]",
         publicPath: ""
     },
-
+    resolve: {
+        extensions: [".js", ".json", ".ts", ".tsx","png","jpg","svg","webp"],
+      },
     module: {
+     
         rules: [
             {
                 test: /\.html$/,
@@ -41,12 +44,6 @@ module.exports = {
             {
                 test: /\.(s[ac]|c)ss$/i,
                 use: [
-                    // {
-                    //     loader: miniCssExcteractPlugin.loader,
-                    //     options: {
-                    //         publicPath: " "
-                    //     }
-                    // },
                     "style-loader",
                     {
                         loader: "css-loader",
@@ -59,7 +56,12 @@ module.exports = {
                     },
                     "postcss-loader",
                     "sass-loader"
-                ]
+                ],
+                exclude: GLOBAL_CSS_REGEXP
+            },
+            {
+                test: GLOBAL_CSS_REGEXP,
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.(ts|js|jsx|tsx)$/,

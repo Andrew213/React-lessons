@@ -1,10 +1,12 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto';
+    background-color: $gray-4;
+    font-size: 14px;
+    line-height: 16;
 }
 
-.app {
-    width: 1500px;
-    padding: 0 15px;
-    padding-top: 100px;
-    margin: auto;
+
+
+*{
+    color: $black;
 }

@@ -1,16 +1,17 @@
 import React from 'react';
-import styles from './cardheader.scss';
 
-const img = require('../../../../img/avatar.png')
+import avatar from '@img/avatar.png';
+
+import styles from './styles.module.less';
 
 export function CardHeader() {
-  return (
-    <div className={styles.cardheader}>
-      <a href="#">
-        <img className={styles.cardheader__avatar} src={img} alt="d" />
-        <p className={styles.cardheader__name}>Владимир Петров</p>
-        <button className={styles.cardheader__btn} data-label='Действия'></button>
-      </a>
-    </div>
-  );
+    return (
+        <div className={styles.cardheader}>
+            {/* <a href="#">
+                <img className={styles.cardheader__avatar} src={avatar} alt="d" />
+                <p className={styles.cardheader__name}>Владимир Петров</p>
+                <button className={styles.cardheader__btn} data-label="Действия" />
+            </a> */}
+        </div>
+    );
 }

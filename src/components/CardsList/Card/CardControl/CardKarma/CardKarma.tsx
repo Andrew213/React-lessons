@@ -1,12 +1,19 @@
 import React from 'react';
-import styles from '../../CardControl/cardcontrol.scss';
 
-export function CardKarma() {
-  return (
-    <div className={styles.cardControl__karma}>
-      <button className={styles.cardControl__karma_up}></button>
-      <span className={styles.cardControl__karma_text}>145</span>
-      <button className={styles.cardControl__karma_down}></button>
-    </div>
-  );
-}
+import styles from './styles.module.less';
+
+const Karma: React.FC = () => {
+    const [karmaCount, setKarmaCount] = React.useState<number>(0);
+
+    const handleKarmaUp = React.useCallback(() => setKarmaCount(prev => ++prev), []);
+    const handleKarmaDown = React.useCallback(() => setKarmaCount(prev => (prev > 0 ? --prev : 0)), []);
+    return (
+        <div className={styles.karma}>
+            <button className={styles.karma__up} onClick={handleKarmaUp} />
+            <span className={styles.karma__count}>{karmaCount}</span>
+            <button className={styles.karma__down} onClick={handleKarmaDown} />
+        </div>
+    );
+};
+
+export default Karma;

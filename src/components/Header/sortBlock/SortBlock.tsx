@@ -1,14 +1,9 @@
-import React from "react";
-import styles from '../../../scss/style.scss'
+import React from 'react';
 
+import styles from './styles.module.less';
 
-function SortBlock() {
-    return (
-        <div className={styles.sortBlock}>
-            sorting dropdown
-        </div>
-    )
-}
+const SortBlock: React.FC = () => {
+    return <div className={styles.sortBlock}>sorting Dropdown</div>;
+};
 
-export default SortBlock
-
+export default SortBlock;

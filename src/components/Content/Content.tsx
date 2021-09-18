@@ -1,18 +1,12 @@
-import React from "react"
-import styles from '../../scss/style.scss'
+import React from 'react';
+import styles from './styles.module.less';
 
+type ContentProps = {
+    children?: React.ReactNode;
+};
 
-interface IContentProps {
-    children?: React.ReactNode
-}
+const Content: React.FC<ContentProps> = ({ children }) => {
+    return <main className={styles.content}>{children}</main>;
+};
 
-function Content({ children }: IContentProps) {
-    return (
-        <main className={styles.content}>
-            {children}
-        </main>
-    )
-}
-
-export default Content
-
+export default Content;

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import styles from '../../scss/style.scss'
+import styles from './styles.module.less';
 
-interface ILayoutProps {
+type LayoutProps = {
     children?: React.ReactNode;
-}
+};
 
-function Layout({ children }: ILayoutProps) {
-    return (
-        <div className={styles.layout}>
-            {children}
-        </div>
-    )
-}
+const Layout: React.FC<LayoutProps> = ({ children }) => {
+    return <div className={styles.layout}>{children}</div>;
+};
 
-export default Layout
+// function Layout({ children }: ILayoutProps) {
+//     return <div className={styles.layout}>{children}</div>;
+// }
+
+export default Layout;

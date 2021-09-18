@@ -1,0 +1,55 @@
+.card-menu {
+    position: relative;
+    width: 5px;
+    height: 5px;
+    margin-right: 37px;
+    border-radius: 50%;
+    top: 0px;
+    background-color: @grey-d9;
+    &::after,
+    &::before {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        left: 0;
+        background-color: @grey-d9;
+    }
+    &::before {
+        top: -8px;
+    }
+
+    &::after {
+        bottom: -8px;
+    }
+}
+
+.control-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 0;
+    top: -10px;
+}
+
+@media (max-width: 940px) {
+    .card-menu {
+        top: 10px;
+    }
+    .card-menu::before {
+        left: inherit;
+        top: 0;
+        right: -9px;
+    }
+    .card-menu::after {
+        bottom: 0;
+        left: -9px;
+    }
+}
+
+@media (max-width: 580px) {
+    .card-menu {
+        top: 18px;
+    }
+}

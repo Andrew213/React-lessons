@@ -1,13 +1,9 @@
-import React from "react"
-import styles from '../../../scss/style.scss'
+import React from 'react';
 
+import styles from './styles.module.less';
 
-export function SearchBlock() {
-    return (
-        <div>
-            <div className={styles.searchBlock}>
+const SearchBlock: React.FC = () => {
+    return <div className={styles.searchBlock}>search block</div>;
+};
 
-            </div>
-        </div>
-    )
-}
+export default SearchBlock;

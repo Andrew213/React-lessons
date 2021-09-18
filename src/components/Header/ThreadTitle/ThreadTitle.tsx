@@ -1,9 +1,9 @@
-import React from "react"
-import styles from '../../../scss/style.scss'
+import React from 'react';
 
+import styles from './styles.module.less';
 
-export function ThreadTitle() {
-    return (
-        <h1 className={styles.threadtitle}>Header</h1>
-    )
-}
+const ThreadTitle: React.FC = () => {
+    return <h1 className={styles.threadTitle}>Header</h1>;
+};
+
+export default ThreadTitle;

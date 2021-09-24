@@ -127,9 +127,11 @@
     font-size: 14px;
     padding-bottom: 12px;
     width: 100%;
-    margin-bottom: 12px;
-    align-items: center;
+    align-items: flex-start;
     border-bottom: 1px solid #ececec;
+    & + & {
+        padding-top: 12px;
+    }
     &:hover p,
     &:hover path {
         transition: all 0.3s;

@@ -1,6 +1,6 @@
 import React from 'react';
 import DropDown from '@/lib/DropDown/DropDown';
-import List, { ListItemType } from '@/lib/List/List';
+import List, { ListProps } from '@/lib/List/List';
 import { declOfNum, useWindowDimensions } from '@/utils';
 import cn from 'classnames';
 import CardControlMobile from './CardControl/CardControlMobile/CardControlMobile';
@@ -15,35 +15,35 @@ import styles from './styles.module.less';
 
 const ARR_HOUR = ['час', 'часа', 'часов'];
 
-const dropDownList: ListItemType[] = [
+const dropDownList: ListProps[] = [
     {
         id: 'Comments',
         text: 'Комментарии',
-        component: comments,
+        liIcon: comments,
         As: 'button',
     },
     {
         id: 'Share',
         text: 'Поделиться',
-        component: share,
+        liIcon: share,
         As: 'button',
     },
     {
         id: 'Hide',
         text: 'Скрыть',
-        component: hide,
+        liIcon: hide,
         As: 'button',
     },
     {
         id: 'Save',
         text: 'Сохранить',
-        component: save,
+        liIcon: save,
         As: 'button',
     },
     {
         id: 'Report',
         text: 'Пожаловаться',
-        component: report,
+        liIcon: report,
         As: 'button',
     },
     {
@@ -66,7 +66,7 @@ const Card: React.FC<CardProps> = ({ userName, title, publicTime, id, img, avata
     const [isTriggerActive, setTriggerActive] = React.useState<boolean>(false);
     const listItemClass = `${styles.listItem}`;
     const { width } = useWindowDimensions();
-    const [menuList, setMenuList] = React.useState<ListItemType[]>(dropDownList);
+    const [menuList, setMenuList] = React.useState<ListProps[]>(dropDownList);
     const WIDTH_940 = width > 940;
 
     React.useEffect(() => {
@@ -122,16 +122,9 @@ const Card: React.FC<CardProps> = ({ userName, title, publicTime, id, img, avata
                         className={styles.cardMenu__list}
                         onTriggerClick={handleTriggerClick}
                     >
-                        {menuList.map(({ id, text, component, As }) => {
+                        {menuList.map(({ id, text, liIcon, As }) => {
                             return (
-                                <List
-                                    id={id}
-                                    key={id}
-                                    As={As}
-                                    text={text}
-                                    className={listItemClass}
-                                    component={component}
-                                />
+                                <List id={id} key={id} As={As} text={text} className={listItemClass} liIcon={liIcon} />
                             );
                         })}
                     </DropDown>

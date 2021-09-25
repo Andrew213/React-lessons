@@ -1,7 +1,4 @@
-import React, { MutableRefObject, PropsWithChildren } from 'react';
-import cn from 'classnames';
-
-import styles from './styles.module.less';
+import React from 'react';
 
 export type IconProps = {
     component: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -10,7 +7,7 @@ export type IconProps = {
     size?: number;
 };
 
-const Icon: React.FC<IconProps> = (props, ref) => {
+const Icon: React.FC<IconProps> = props => {
     const { component: Component, onClick, iconClassName, size } = props;
 
     const svgProps: React.SVGProps<SVGSVGElement> = {};

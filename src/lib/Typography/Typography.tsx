@@ -2,7 +2,6 @@ import React from 'react';
 import cn from 'classnames';
 
 import styles from './styles.module.less';
-import classNames from 'classnames';
 
 type Tsizes = 28 | 20 | 16 | 14 | 12 | 10;
 
@@ -17,12 +16,14 @@ type TypographyProps = {
 const Typography: React.FC<TypographyProps> = props => {
     const { As = 'span', children, size, mobileSize, tabletSize, desktopSize } = props;
 
-    const slasses = cn(
+    const classes = cn(
         styles[`s${size}`],
         { [styles[`m${mobileSize}`]]: mobileSize },
         { [styles[`t${tabletSize}`]]: tabletSize },
         { [styles[`d${desktopSize}`]]: desktopSize }
     );
 
-    return <As className={classNames}>{children}</As>;
+    return <As className={classes}>{children}</As>;
 };
+
+export default Typography;

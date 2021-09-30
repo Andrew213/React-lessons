@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type IconProps = {
-    component: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    component: React.ComponentType<React.SVGProps<SVGSVGElement>> | undefined;
     iconClassName?: string;
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
     size?: number;

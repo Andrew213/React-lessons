@@ -2,6 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 
 import style from './styles.module.less';
+import Icon from '../Icon/Icon';
 
 type DropDownProps = {
     trigger: React.ReactNode;
@@ -12,6 +13,8 @@ type DropDownProps = {
     onTriggerClick?: (isOpen: boolean) => void;
     className?: string;
     triggerActive?: string;
+    prefix?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+    suffix?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 };
 
 const noop = () => {};
@@ -25,6 +28,8 @@ const DropDown: React.FC<DropDownProps> = ({
     className,
     onTriggerClick,
     triggerActive,
+    prefix,
+    suffix,
 }) => {
     const [isDropDownOpen, setIsDropDownOpen] = React.useState<boolean>(isOpen);
 
@@ -57,8 +62,16 @@ const DropDown: React.FC<DropDownProps> = ({
 
     return (
         <div className={style.conatainer}>
-            <div ref={rootEl} className={style.trigger} onClick={handleOpen}>
+            <div
+                ref={rootEl}
+                className={cn(style.trigger, { [style.triggerFlex]: prefix || suffix })}
+                onClick={handleOpen}
+            >
+                {prefix && <Icon component={prefix} iconClassName={style.prefix} />}
+
                 {trigger}
+
+                {suffix && <Icon component={suffix} iconClassName={style.suffix} />}
             </div>
             {isDropDownOpen && (
                 <div className={style.listContainer}>

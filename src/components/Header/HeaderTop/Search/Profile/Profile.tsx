@@ -20,7 +20,7 @@ const Profile: React.FC = () => {
         const accessToken = localStorage.getItem('access_token');
         if (accessToken) {
             void axios
-                .get('https://oauth.reddit.com/api/v1/me', {
+                .get('https://oauth.reddit.com/api/v1/me?raw_json=1', {
                     headers: {
                         Authorization: `bearer ${accessToken}`,
                     },
@@ -47,7 +47,11 @@ const Profile: React.FC = () => {
                 href={`https://www.reddit.com/api/v1/authorize?client_id=${process.env.REACT_APP_CLIENT_ID}&response_type=token&state=random_string&redirect_uri=${REDIRECT_URI}&scope=read submit identity`}
                 className={style.profile}
             >
-                <img src={data.iconImg} />
+                {data.iconImg ? (
+                    <img src={data.iconImg} className={style.profile__avatar} />
+                ) : (
+                    <Icon component={anonim} />
+                )}
                 <Typography className={style.profile__text} As="span" weight={500} size={20}>
                     {data.name ? data.name : 'Аноним'}
                 </Typography>

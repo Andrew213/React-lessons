@@ -6,6 +6,12 @@ import Content from './components/Content/Content';
 
 import './App.less';
 
+const accessToken = new URLSearchParams(window.location.hash).get('#access_token');
+
+if (accessToken) {
+    localStorage.setItem('access_token', accessToken);
+}
+
 const App: React.FC = () => {
     return (
         <Layout>
